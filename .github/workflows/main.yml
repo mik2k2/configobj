@@ -19,7 +19,7 @@ jobs:
 
     # Runs a set of commands using the runners shell
     - name: Setup env
-      run: command . .env --yes --develop --virtualenv "python -m venv"
+      run: command . .env --yes --develop --virtualenv "python3 -m venv"
 
     # Runs a single command using the runners shell
     - name: Run tests
