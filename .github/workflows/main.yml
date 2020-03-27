@@ -2,8 +2,7 @@
 
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# Controls when the action will run. Triggers the workflow on push
 on: [push]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -18,13 +17,15 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-    - name: Setup env
-      run: command . .env --yes --develop
-
     # Runs a set of commands using the runners shell
+    - name: Setup env
+      run: |
+         pip install virtualenv
+         command . .env --yes --develop
+
+    # Runs a single command using the runners shell
     - name: Run tests
-      run: invoke check
+      run: invoke test
     - name: Build docs
       run: invoke build --docs
     - name: Run code quality
