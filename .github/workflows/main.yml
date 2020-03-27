@@ -22,6 +22,4 @@ jobs:
       run: |
         sudo apt-get install python3-venv
         command . .env --yes --develop --virtualenv "python3 -m venv"
-        invoke test
-        invoke build --docs
-        invoke check
+        invoke test build --docs
